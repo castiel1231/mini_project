@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<project name="Mini_Project" default="Generate WAR" basedir=".">
+
+	<property name="baseant" value="C:"/>
+	<property name="nomearfile" value="RAW_MiniProject.ear"/>
+	<property name="nomearfilesource" value="MiniProject.ear"/>
+	<property name="nomearfileLive" value="MiniProject.ear"/>
+	<property name="ear" value="C:\temp\MiniProject"/>
+	<property name="sourcedir" value="\temp"/>
+	<property name="warPrj" value="Mini_Project"/>
+	<property name="Mini_Project" value="Mini_Project"/>
+			
+	<!--**********************************************************************-->
+	<!--Début du processus de génération des ear                              -->
+	<!--**********************************************************************-->
+		<target name="Generate WAR">
+	    <tstamp><format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" locale="fr,CA"/></tstamp>
+	    <echo message="DÉBUT exécution ANT (${warPrj}): ${TODAY}"/>
+		<echo message="${ant.version}"/>
+	    <echo message="*** Export du WAR automatique ***"/>
+
+		<mkdir dir="${ear}"/>
+		<delete file="${ear}\Mini_Project.war"/>
+		<war destfile="${ear}\Mini_Project.war">
+			  <fileset dir="WebContent"/>
+			  <lib dir="lib" />
+		      <classes dir="build/classes"/>
+		</war>
+	    <tstamp><format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" locale="fr,CA"/></tstamp>
+	    <echo message="FIN exécution ANT (${SiteSuffixe}): ${TODAY}"/>
+	 </target>
+</project>
